@@ -14,38 +14,29 @@ class ProductSeeder extends Seeder
     public function run()
     {
         Product::create([
-            'name' => 'Lubricante de auto',
-            'barcode' => '525222',
-            'cost' => '20',
-            'pricev' => '30',
-            'stock' => '10',
-            'alerts' => '5',
-            'percentage' => '5',
+            'nombre' => 'Concentrado inicial',
+            'descripcion' => '25%',
+            'unidad_medida' => 'GR',
             'image' => 'noimg.png',
             'category_id' => 1,
+            'user_id' => 1,
         ]);
 
         Product::create([
-            'name' => 'Espuma 210',
-            'barcode' => '5251222',
-            'cost' => '20',
-            'pricev' => '30',
-            'stock' => '10',
-            'alerts' => '5',
-            'percentage' => '5',
+            'nombre' => 'Concentrado final',
+            'descripcion' => '15%',
+            'unidad_medida' => 'GR',
             'image' => 'noimg.png',
-            'category_id' => 2,
+            'category_id' => 1,
+            'user_id' => 1,
         ]);
         Product::create([
-            'name' => 'Volante',
-            'barcode' => '525222',
-            'cost' => '20',
-            'pricev' => '30',
-            'stock' => '10',
-            'alerts' => '5',
-            'percentage' => '5',
+            'nombre' => 'Test 1',
+            'descripcion' => '25%',
+            'unidad_medida' => 'GR',
             'image' => 'noimg.png',
-            'category_id' => 3,
+            'category_id' => 1,
+            'user_id' => 1,
         ]);
     }
 }
