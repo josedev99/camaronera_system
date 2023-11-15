@@ -11,7 +11,7 @@ class Home extends Component
     public $data = [];
     public function render()
     {
-        $this->data = DB::select('SELECT * FROM products WHERE products.stock < products.alerts');
+        //$this->data = DB::select('SELECT * FROM products WHERE products.stock < products.alerts');
        
         return view('livewire.home.home')->extends('layouts.theme.app')
         ->section('content'); 
