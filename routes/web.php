@@ -19,7 +19,7 @@ use  App\Http\Livewire\Dash;
 use  App\Http\Livewire\Home;
 
 use App\Http\Controllers\ExportController;
-
+use App\Http\Livewire\Compras;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,3 +80,6 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
+
+//Routas para compra
+Route::get('compras',Compras::class)->middleware('permission:sale_index');
