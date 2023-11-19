@@ -56,7 +56,7 @@ Route::middleware(['auth'])->group(function () {
         });
         
         
-        Route::get('dash', Dash::class)->middleware('permission:dash');
+       Route::get('dash', Dash::class)->middleware('permission:sale_index');
         
         Route::get('categories', Categories::class)->middleware('permission:category_index');;
         Route::get('denominations', Denominations::class)->middleware('permission:denomination_index');;
@@ -83,3 +83,5 @@ Route::middleware(['auth'])->group(function () {
 
 //Routas para compra
 Route::get('compras',Compras::class)->middleware('permission:sale_index');
+
+
