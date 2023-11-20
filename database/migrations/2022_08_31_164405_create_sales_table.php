@@ -16,9 +16,13 @@ class CreateSalesTable extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
             $table->decimal('total', 10,2);
+            $table->string('customer', 150);
+            $table->string('image')->nullable();
+            $table->decimal('grams', 10,2);
+            $table->string('pond', 50);
+            $table->string('invoice', 50);
+            $table->string('type_invoice', 50);
             $table->integer('items');
-            $table->decimal('cash', 10,2);
-            $table->decimal('change', 10,2);
             $table->decimal('iva', 10,2);
             $table->enum('pay', ['CONTADO', 'CREDITO'])->default('CONTADO');
             $table->enum('status', ['PAID', 'PENDING', 'CANCELLED'])->default('PAID');
@@ -26,12 +30,13 @@ class CreateSalesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->unsignedBigInteger('customer_id');
-            $table->foreign('customer_id')->references('id')->on('customers');
+            
             
             $table->timestamps();
             
         });
+
+        
     }
 
     /**

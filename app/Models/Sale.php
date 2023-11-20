@@ -12,12 +12,16 @@ class Sale extends Model
     protected $fillable = [
         'total',
         'items',
-        'cash',
+        'invoice',
         'iva',
-        'change',
+        'type_invoice',
         'status',
+        'pay',
         'user_id',
-        'customer_id'
+        'customer',
+        'pond',
+        'grams',
+        'image'
                 
     ];
 
