@@ -17,6 +17,8 @@ class CreateComprasTable extends Migration
             $table->id();
             $table->string('nombre_proveedor', 150);
             $table->string('descripcion')->nullable();
+            $table->decimal('precioUnit', 10,2);
+            $table->integer('cantidad');
             $table->decimal('monto', 10,2);
             $table->decimal('saldo', 10,2);
             $table->string('tipo_pago', 150);
