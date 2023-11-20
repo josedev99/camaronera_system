@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" wire:submit.prevent="saveCompra">
+                <form method="POST" wire:submit.prevent="{{ isset($id_compra) ? "updateCompra" : "saveCompra"}}">
                 <div class="card">
                     <div class="card-body">
                             <div class="form-row">
@@ -23,25 +23,33 @@
                                     <input type="text" id="descripcion" wire:model.lazy="descripcion" class="form-control">
                                 </div>
                                 <div class="form-group col-sm-12 col-md-2">
-                                    <label for="monto">Monto</label>
-                                    <input type="number" id="monto" wire:model.lazy="monto" step=".01" min="0" class="form-control">
+                                    <label for="monto">Precio Unitario</label>
+                                    <input type="number" id="precioUnit" wire:model="precioUnit" step=".01" min="0" class="form-control">
                                 </div>
-                                <div class="form-group col-sm-12 col-md-4">
+                                <div class="form-group col-sm-12 col-md-2">
+                                    <label for="monto">Cantidad</label>
+                                    <input type="number" id="cantidad" wire:model="cantidad" step="1" min="1" class="form-control">
+                                </div>
+                                <div class="form-group col-sm-12 col-md-2">
+                                    <label for="monto">Monto</label>
+                                    <input readonly type="text" id="monto" wire:model.lazy="monto" step=".01" min="0" class="form-control">
+                                </div>
+                                <div class="form-group col-sm-12 col-md-3">
                                     <label for="tipo_pago">Tipo pago</label>
                                     <select name="" class="form-control" wire:model.lazy="tipo_pago" id="tipo_pago">
-                                        <option value="none">Seleccionar</option>
+                                        <option value="">Seleccionar</option>
                                         <option value="Efectivo">Efectivo</option>
                                         <option value="Cheque">Cheque</option>
                                         <option value="Transferencia">Transferencia</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-sm-12 col-md-6">
+                                <div class="form-group col-sm-12 col-md-3">
                                     <label for="producto">Producto</label>
-                                    <select name="producto" id="producto" wire:model.lazy="producto_id" class="form-control">
-                                        <option value="none">Seleccionar</option>
-                                        <option value="1">Producto 1</option>
-                                        <option value="2">Producto 2</option>
-                                        <option value="3">Producto 3</option>
+                                    <select name="producto" id="producto" wire:model.lazy="producto_id" class="form-control select2">
+                                        <option value="">Seleccionar</option>
+                                       @foreach($products as $row)
+                                            <option value="{{$row['id']}}">{{$row['nombre']}}</option>
+                                       @endforeach
                                     </select>
                                 </div>
 
@@ -49,7 +57,7 @@
                         </form>
                     </div>
                     <div class="card-footer p-1 d-flex justify-content-end">
-                        <button class="btn btn-outline-secondary btn-sm"><i class="fas fa-save"></i> Registrar</button>
+                        <button type="submit" class="btn btn-outline-secondary btn-sm"><i class="fas fa-save"></i> Registrar</button>
                     </div>
                 </div>
                 </form>

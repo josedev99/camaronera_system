@@ -24,11 +24,6 @@
    <script src="{{asset('assets/js/onscan/onscan.js')}}"></script>
      <script src="{{asset('assets/js/onscan/onscan.min.js')}}"></script>
      <script src="{{asset('plugins/keypress/keypress.js')}}"></script>
-     
-
-
-
-
 <style> 
 aside{
     display: none!important;

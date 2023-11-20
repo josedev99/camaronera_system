@@ -16,6 +16,7 @@
                         <thead style=" background: #f37f23">
                             <tr>
                                 <th class="text-center text-white p-1">#</th>
+                                <th class="text-center text-white p-1">Fecha</th>
                                 <th class="text-center text-white p-1">Proveedor</th>
                                 <th class="text-center text-white p-1">Descripción</th>
                                 <th class="text-center text-white p-1">Monto</th>
@@ -27,13 +28,18 @@
                             @foreach($registros as $row)
                             <tr>
                                 <td class="text-center p-1">{{$row['id']}}</td>
+                                <td class="text-center p-1">{{ date('d-m-Y',strtotime($row['fecha'])) }}</td>
                                 <td class="text-center p-1">{{$row['nombre_proveedor']}}</td>
                                 <td class="text-center p-1">{{$row['descripcion']}}</td>
-                                <td class="text-center p-1">{{$row['monto']}}</td>
+                                <td class="text-center p-1">${{ number_format($row['monto'],2) }}</td>
                                 <td class="text-center p-1">{{$row['tipo_pago']}}</td>
                                 <td class="text-center p-1">
-                                    <i title="Editar compra" class="fas fa-edit text-info" style="font-size: 18px"></i>
-                                    <i title="Eliminar compra" class="fas fa-trash text-danger" style="font-size: 18px"></i>
+                                    <button type="button" onclick="edit({{$row['id']}})" style="border: none !important" title="Editar compra" class="btn btn-outline-info btn-sm">
+                                        <i class="fas fa-edit text-info" style="font-size: 18px"></i>
+                                    </button>
+                                    <button style="border: none !important" class="btn btn-outline-danger btn-sm" title="Eliminar compra" onclick="confirmDelete({{$row['id']}})">
+                                        <i class="fas fa-trash text-danger" style="font-size: 18px"></i>
+                                    </button>
                                 </td>
                             </tr>
                             @endforeach
@@ -44,11 +50,11 @@
         </div>
     </div>
     </div>
-
 <script>
     //Abrir modal
     function openModal(){
         $("#addEditCompra").modal('show');
+        Livewire.emit('resetFormulario')
     }
     /* document.addEventListener('livewire:load', function () {
         setInterval(function () {
@@ -63,8 +69,61 @@
                 icon: "success"
             });
             $("#addEditCompra").modal('hide');
+            window.location.href = window.location.origin + '/compras';
+        })
+        Livewire.on('showModalEditar', (res)=>{
+            $("#addEditCompra").modal('show');
+        })
+        Livewire.on('udp', (res)=>{
+            Swal.fire({
+                title: "Exito",
+                text: res,
+                icon: "success"
+            });
+            $("#addEditCompra").modal('hide');
+            window.location.href = window.location.origin + '/compras';
         })
     })
+    document.addEventListener('livewire:load', ()=>{
+        Livewire.on('eliminado', (res)=>{
+            Swal.fire({
+                title: "Exito",
+                text: res,
+                icon: "success"
+            });
+            window.location.href = window.location.origin + '/compras';
+        })
+    })
+    function confirmDelete(id){
+        window.confirm('¿Desea eliminar esta compra?') ? Livewire.emit('destroy', id) : null;
+        return false;
+        //No funciona esto de abajo
+        Swal.fire({
+            title: "Desea eliminar la compra?",
+            text: "Esta acción eliminara la compra de forma permanente!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si",
+            cancelButtonText: "No",
+            }).then((result) => {
+            if (result.isConfirmed) {
+                // Check for any errors
+                console.log(result);
+                Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+                });
+                Livewire.emit('destroy',id);
+            }
+            });
+    }
+    function edit(id){
+        console.log(id)
+        Livewire.emit('edit',id);
+    }
 </script>
     
     
