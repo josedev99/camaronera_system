@@ -1,91 +1,49 @@
-@include('common/modalHead')
-
-<div class="row">
-
-    
-
-    <div class="col-sm-12 col-md-8">
-        <div class="form-group">
-            <label>Nombre</label>
-            <input type="text" wire:model.lazy="name" class="form-control" placeholder="nombre">
-            @error('name') <span class="text-danger er">{{$message}}</span> @enderror
+<!-- Modal -->
+<div class="modal fade" id="addEditProducts" data-backdrop="static" wire:ignore.self data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header py-1" style="background: #4cb050">
+                <h5 class="modal-title text-white" id="labelModalCompra">Crear nuevo Producto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" wire:submit.prevent="saveProducto">
+                <div class="card">
+                    <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group col-sm-12 col-md-6">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" id="nombre" wire:model.lazy="nombre" class="form-control">
+                                </div>
+                                <div class="form-group col-sm-12 col-md-6">
+                                    <label for="descripcion">Descripción</label>
+                                    <input type="text" id="descripcion" wire:model.lazy="descripcion" class="form-control">
+                                </div>
+                                <div class="form-group col-sm-12 col-md-6">
+                                    <label for="unidad_medida">Unidad de Medida</label>
+                                    <input type="text" id="unidad_medida" wire:model.lazy="unidad_medida" class="form-control">
+                                </div>
+                                <div class="form-group col-sm-12 col-md-4">
+                                    <label for="category_id">Categoria</label>
+                                    <select name="" class="form-control" wire:model.lazy="category_id" id="category_id">
+                                        <option value="none">Seleccionar</option>
+                                        <option value="1">special1</option>
+                                        <option value="2">special2</option>
+                                    </select>
+                                </div>
+                                
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer p-1 d-flex justify-content-end">
+                        <button class="btn btn-outline-secondary btn-sm"><i class="fas fa-save"></i> Registrar</button>
+                    </div>
+                </div>
+                </form>
+            </div>
         </div>
     </div>
-
-   
-
-    <div class="col-sm-12 col-md-4"> 
-        <div class="form-group">
-            <label>Barcode</label>
-            <input type="text" wire:model.lazy="barcode" class="form-control" placeholder="Ej: 1232131">
-            @error('barcode') <span class="text-danger er">{{$message}}</span> @enderror
-        </div>
-    </div>
-   
-    <div class="col-sm-12 col-md-4">
-        <div class="form-group">
-            <label>Precio</label>
-            <input type="text" data-type="currency" wire:model.lazy="price" class="form-control" placeholder="Ej: 12.5">
-            @error('price') <span class="text-danger er">{{$message}}</span> @enderror
-        </div>
-    </div>
-
-    @if($selected_id == false)
-    <div class="col-sm-12 col-md-4">
-        <div class="form-group">
-            <label>Stock</label>
-            <input type="number" wire:model.lazy="stock" class="form-control" placeholder="Ej: 20" min="0">
-            @error('stock') <span class="text-danger er">{{$message}}</span> @enderror
-        </div>
-    </div>
-    @endif
-    
-    
-    <div class="col-sm-12 col-md-4">
-        <div class="form-group">
-            <label>Inv. Min</label>
-            <input type="number" wire:model.lazy="alerts" class="form-control" placeholder="Ej: 20">
-            @error('alerts') <span class="text-danger er">{{$message}}</span> @enderror
-        </div>
-    </div>
-
-    <div class="col-sm-12 col-md-4">
-        <div class="form-group">
-            <label>Porcentaje de ganancia %</label>
-            <input type="number" wire:model.lazy="percentage" class="form-control" placeholder="Ej: 20">
-            @error('percentage') <span class="text-danger er">{{$message}}</span> @enderror
-        </div>
-    </div>
-
-
-    <div class="col-sm-12 col-md-4"> 
-        <div class="form-group">
-            <label>Categoria</label>
-            <select class="form-control" wire:model="category_id">
-            <option value="Elegir" disabled>Elegir</option>
-            @foreach ($categories as $category)
-            <option value="{{$category->id}}"  @if(false) selected @endif>{{$category->name}}</option>
-            @endforeach 
-            </select>
-           
-            @error('category_id') <span class="text-danger er">{{$message}}</span> @enderror
-        </div>
-    </div>
-
-  
-
-   
-
-    <div class="col-sm-12 col-md-12 mb-2">
-        <div class="form-group custom-file">
-            
-            <input type="file" wire:model="image" class="custom-file-input" placeholder="Seleciconar">
-            <label class="custom-file-label">Imagen {{$image}}</label>
-            @error('image') <span class="text-danger er">{{$message}}</span> @enderror
-        </div>
-    </div>
-
-    
 </div>
-
-@include('common/modalFooter')
