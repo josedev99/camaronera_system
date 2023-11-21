@@ -1,4 +1,5 @@
 @include('livewire.compras.modal.addEdit')
+@include('livewire.compras.modal.generarPDF')
 <div>
     <div class="row sales layout-top-spacing">
         <div class="col-lg-12 col-12 col-sm-12 layout-spacing">
@@ -9,10 +10,23 @@
                             <h4 class="p-0 mb-2"><b>Gestionar compras</b></h4>
                         </div>
                     </div>
-                    <button onclick="openModal()" class="btn btn-outline-success btn-sm">Nueva compra</button>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                            <button onclick="openModal()" class="btn btn-outline-success btn-sm">Nueva compra</button>
+                        </div>
+                        <div class="col-sm-6 col-md-5 d-flex justify-content-end align-items-center">
+                            <i onclick="generarPDF()" title="Generar pdf" class="far fa-file-pdf" style="color: #f75555;font-size:25px;cursor: pointer;"></i>
+                        </div>
+                    </div>
                 </div>
                 <div class="widget-content widget-content-area">
-                    <table class="table table-bordered table-hover mb-4">
+                    <div class="d-flex justify-content-end">
+                        <div class="form-group col-sm-12 col-md-3">
+                            <input type="text" wire:model="buscar" class="form-control" style="height: 32px" placeholder="Buscar">
+                        </div>
+                    </div>
+                    {{$buscar}}
+                    <table class="table table-responsive-sm table-bordered table-hover mb-4">
                         <thead style=" background: #f37f23">
                             <tr>
                                 <th class="text-center text-white p-1">#</th>
@@ -45,6 +59,7 @@
                             @endforeach
                         </tbody>
                     </table> 
+                    {{ $registros->links() }}
                 </div>
             </div>
         </div>
@@ -123,6 +138,10 @@
     function edit(id){
         console.log(id)
         Livewire.emit('edit',id);
+    }
+    //Reporteria compra
+    function generarPDF(){
+        $("#reporteriaCompra").modal('show');
     }
 </script>
     
