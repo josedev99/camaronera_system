@@ -16,7 +16,7 @@
                         data-target="#theModal">Agregar</a>
 
                 </div>
-
+ 
 
 
 
@@ -35,9 +35,10 @@
                             <tr>
                                 <th class="table-th text-center">ID</th>
                                 <th class="table-th text-center">Factura</th>
-                                <th class="table-th text-center">Libras</th>
-                                <th class="table-th text-center">Total V</th>
-                                <th class="table-th text-center">Estado</th>
+                                <th class="table-th text-center">Tipo</th>
+                                <th class="table-th text-center">Abono</th>
+                                <th class="table-th text-center">Saldo</th>
+                                <th class="table-th text-center">Fecha</th>
                                 <th class="table-th text-center">Acciones</th>
 
                             </tr>
@@ -46,9 +47,11 @@
                             @foreach ($data as $i)
                                 <tr>
                                     <td class="text-center">{{ $i->id }}</td>
-                                    <td class="text-center">{{ $i->invoice }}</td>
-                                    <td class="text-center">{{ $i->items }} LB</td>
-                                    <td class="text-center">$ {{ number_format($i->total,2)}}</td>
+                                    <td class="text-center">{{ $i->numero_recibo }}</td>
+                                    <td class="text-center">{{ $i->tipo_pago }}</td>
+                                    <td class="text-center">$ {{ number_format($i->monto_abono,2)}}</td>
+                                    <td class="text-center">$ {{ number_format($i->saldo,2)}}</td>
+                                    <td class="text-center"> {{ \Carbon\Carbon::parse($i->created_at)->format('d-m-Y') }} </td>
                                     @if($i->status == 'PAID')
                                     <td class="text-center"><span  class="badge bg-success">Pagado</span ></td>
                                     @elseif($i->status == 'PENDING')
@@ -93,7 +96,7 @@
         </div>
     </div>
 
-    @include('livewire.ventas.form')
+    @include('livewire.abonos.form')
 </div>
 
 
