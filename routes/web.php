@@ -83,5 +83,5 @@ Route::middleware(['auth'])->group(function () {
 
 //Routas para compra
 Route::get('compras',Compras::class)->middleware('permission:sale_index');
-
+Route::get('compras/report/pdf/', [Compras::class, 'reportPDF'])->name('pdfCompra');
 

@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\compras as ComprasModel;
 use App\Models\Product;
+use Barryvdh\DomPDF\PDF;
 use Faker\Core\Number;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -18,17 +19,29 @@ class Compras extends Component
     public $monto;
     public $tipo_pago;
     public $producto_id;
-    public $registros;
     public $products;
+    public $buscar;
+    public $desde;
+    public $hasta;
     protected $listeners = ['destroy','edit','resetFormulario'];
     public function render()
     {
         $precioUnitario = is_numeric($this->precioUnit) ? $this->precioUnit : 0;
         $cantidad = is_numeric($this->cantidad) ? $this->cantidad : 0;
         $this->monto = number_format(($precioUnitario * $cantidad),2);
-        return view('livewire.compras.index', ['hello' => 'Hola'])
+        $buscar = $this->buscar;
+        if($this->buscar != null){
+            $registros = ComprasModel::where('nombre_proveedor','like','%'.$this->buscar.'%')->where('descripcion','like','%'.$this->buscar.'%')->orderBy('id','desc')->paginate(10);
+        }else{
+            $registros = ComprasModel::orderBy('id','desc')->paginate(10);
+        }
+        return view('livewire.compras.index',compact('registros','buscar'))
         ->extends('layouts.theme.app')
         ->section('content');
+    }
+    public function updatedQuery()
+    {
+        $this->resetPage(); // Reset pagination when the query changes
     }
     public function resetFormulario(){
         $this->id_compra = "";
@@ -42,14 +55,7 @@ class Compras extends Component
 
     public function mount()
     {
-        $this->cargarRegistros();
         $this->loadProducts();
-    }
-    public function cargarRegistros()
-    {
-        // Obtener registros de la base de datos
-        $this->registros = ComprasModel::orderBy('id','desc')->get();
-
     }
     public function loadProducts(){
         $this->products = Product::orderBy('id','desc')->get();
@@ -122,5 +128,13 @@ class Compras extends Component
             'product_id' => $this->producto_id
         ]);
         $this->emit('udp','Datos actualizado exitosamente!');
+    }
+    public function generarPDF(){
+        dd('Hola');
+        return redirect()->to('pdfCompra');
+    }
+    public function reportePDF(){
+        $pdf = PDF::loadView('compras.pdf.compras');
+        return $pdf->stream('documento.pdf');
     }
 }
