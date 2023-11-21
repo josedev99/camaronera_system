@@ -16,6 +16,7 @@ use  App\Http\Livewire\Providers;
 use  App\Http\Livewire\Customers;
 use  App\Http\Livewire\Expenses;
 use  App\Http\Livewire\Dash;
+use  App\Http\Livewire\SalesC;
 use  App\Http\Livewire\Home;
 
 use App\Http\Controllers\ExportController;
@@ -61,7 +62,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('categories', Categories::class)->middleware('permission:category_index');;
         Route::get('denominations', Denominations::class)->middleware('permission:denomination_index');;
         Route::get('products', Products::class)->middleware('permission:product_index');;
-        Route::get('sales', Expenses::class)->middleware('permission:sale_index');;
+        Route::get('sales', Expenses::class)->middleware('permission:sale_index');
+        Route::get('ventas', SalesC::class);
        
         Route::get('cashout', Cashout::class)->middleware('permission:cashout_index');;
         Route::get('reports', Reports::class)->middleware('permission:report_index');;
