@@ -21,7 +21,7 @@
                 </div>
                 <select class="form-control" wire:model="type_invoice">
                     <option value="Elegir" disabled>Elegir</option>
-                    <option value="Factura">Factura CF</option>
+                    <option value="Factura CF">Factura CF</option>
                     <option value="Factura CCF">Factura CCF</option>
                 </select>
                 @error('type_invoice')

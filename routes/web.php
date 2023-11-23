@@ -75,6 +75,24 @@ Route::middleware(['auth'])->group(function () {
         //reportepdf
         Route::get('report/pdf/{user}/{type}/{product}/{fi}/{ff}', [ExportController::class, 'reportPDF'])->middleware('permission:pdf');;
         Route::get('report/pdf/{user}/{type}/{product}', [ExportController::class, 'reportPDF'])->middleware('permission:pdf');;
+        //ventaspdf
+        Route::get('report/ventas_pdf/{user}/{type}/{pond}/{fi}/{ff}', [ExportController::class, 'ventas_pdf'])->middleware('permission:pdf');
+        Route::get('report/ventas_pdf/{user}/{type}/{pond}', [ExportController::class, 'ventas_pdf'])->middleware('permission:pdf');
+        //compras pdf
+        Route::get('report/compras_pdf/{user}/{type}/{fi}/{ff}', [ExportController::class, 'compras_pdf'])->middleware('permission:pdf');
+        Route::get('report/compras_pdf/{user}/{type}', [ExportController::class, 'compras_pdf'])->middleware('permission:pdf');
+         //abonos pdf
+         Route::get('report/abonos_pdf/{user}/{type}/{fi}/{ff}', [ExportController::class, 'abonos_pdf'])->middleware('permission:pdf');
+         Route::get('report/abonos_pdf/{user}/{type}', [ExportController::class, 'abonos_pdf'])->middleware('permission:pdf');
+        //ventas excel
+        Route::get('report/ventas_excel/{user}/{type}/{pond}/{fi}/{ff}', [ExportController::class, 'ventas_excel'])->middleware('permission:excel');
+        Route::get('report/ventas_excel/{user}/{type}/{pond}', [ExportController::class, 'ventas_excel'])->middleware('permission:excel');
+        //compras excel
+        Route::get('report/compras_excel/{user}/{type}/{fi}/{ff}', [ExportController::class, 'compras_excel'])->middleware('permission:excel');
+        Route::get('report/compras_excel/{user}/{type}', [ExportController::class, 'compras_excel'])->middleware('permission:excel');
+         //abonos excel
+         Route::get('report/abonos_excel/{user}/{type}/{fi}/{ff}', [ExportController::class, 'abonos_excel'])->middleware('permission:excel');
+         Route::get('report/abonos_excel/{user}/{type}', [ExportController::class, 'abonos_excel'])->middleware('permission:excel');
         //reporteexcel
 
         Route::get('report/excel/{user}/{type}/{product}/{fi}/{ff}', [ExportController::class, 'ReporteExcel'])->middleware('permission:excel');;
