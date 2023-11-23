@@ -176,6 +176,19 @@
             </h5>
         </div>
 
+        <div class="col-12">
+            <h5><b>Fecha:</b> {{ \Carbon\Carbon::parse($show->created_at)->format('d-m-Y H:i:s') }}</h5>
+        </div>
+
+        <div class="col-12 text-center">
+            @if($show->image != null)
+            <span>
+                <img src="{{asset('storage/invoices/'.$show->image)}}" alt="Ejemplo" height="200" width="200" class="rounded">
+            </span>
+            @endif
+            
+        </div>
+
 
     </div>
 @endif

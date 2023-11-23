@@ -21,7 +21,7 @@
 
                     <div class="row">
                         <div class="col-12 d-flex justify-content-center">
-                            <h3><b>Bienvenidos al sistema de control de inventarios</b></h4>
+                            <h3><b>Bienvenidos al sistema de ACOOAMAR de R.L.</b></h4>
                         </div>
                         <div class="col-12 d-flex justify-content-center">
                             <div id="clockdate">

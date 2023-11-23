@@ -25,7 +25,7 @@
                 <div class="form-container">
                     <div class="form-content">
 
-                        <h1 class="">Inicio de Sesion <a href="index.html"><span class="brand-name">ACAPVM DE R. L.</span></a></h1>
+                        <h1 class="">Inicio de Sesion <a href="index.html"><span class="brand-name">ACOOAMAR de R.L.</span></a></h1>
                         
                         <form class="text-left"  method="POST" action="{{ route('login') }}">
                              @csrf
@@ -78,7 +78,7 @@
 
                             </div>
                         </form>                        
-                        <p class="terms-conditions">© 2022 All Rights Reserved. DEVS is a product of Designreset.</p>
+                        <p class="terms-conditions">© 2023 All Rights Reserved. DEVS is a product of Designreset.</p>
 
                     </div>                    
                 </div>

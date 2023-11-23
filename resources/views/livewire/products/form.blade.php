@@ -11,8 +11,8 @@
             </div>
             <div class="modal-body">
                 <form method="POST" wire:submit.prevent="saveProducto">
-                <div class="card">
-                    <div class="card-body">
+                    <div class="card">
+                        <div class="card-body">
                             <div class="form-row">
                                 <div class="form-group col-sm-12 col-md-6">
                                     <label for="nombre">Nombre</label>
@@ -20,11 +20,13 @@
                                 </div>
                                 <div class="form-group col-sm-12 col-md-6">
                                     <label for="descripcion">Descripción</label>
-                                    <input type="text" id="descripcion" wire:model.lazy="descripcion" class="form-control">
+                                    <input type="text" id="descripcion" wire:model.lazy="descripcion"
+                                        class="form-control">
                                 </div>
                                 <div class="form-group col-sm-12 col-md-6">
                                     <label for="unidad_medida">Unidad de Medida</label>
-                                    <input type="text" id="unidad_medida" wire:model.lazy="unidad_medida" class="form-control">
+                                    <input type="text" id="unidad_medida" wire:model.lazy="unidad_medida"
+                                        class="form-control">
                                 </div>
                                 <div class="form-group col-sm-12 col-md-4">
                                     <label for="category_id">Categoria</label>
@@ -34,14 +36,14 @@
                                         <option value="2">special2</option>
                                     </select>
                                 </div>
-                                
                             </div>
-                        </form>
+                        </div>
+                        <div class="card-footer p-1 d-flex justify-content-end">
+                            <button wire:click="updateProduct" class="btn btn-outline-secondary btn-sm">
+                                <i class="fas fa-save"></i> Guardar
+                            </button>
+                        </div>
                     </div>
-                    <div class="card-footer p-1 d-flex justify-content-end">
-                        <button class="btn btn-outline-secondary btn-sm"><i class="fas fa-save"></i> Registrar</button>
-                    </div>
-                </div>
                 </form>
             </div>
         </div>
