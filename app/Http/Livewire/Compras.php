@@ -60,6 +60,14 @@ class Compras extends Component
     public function loadProducts(){
         $this->products = Product::orderBy('id','desc')->get();
     }
+    //Procesar form
+    public function processForm(){
+        if($this->id_compra == ""){
+            $this->saveCompra();
+        }else{
+            $this->updateCompra();
+        }
+    }
     public function saveCompra(){
         $hoy = date('Y-m-d');
         $hora = date('H:i:s');
@@ -104,7 +112,7 @@ class Compras extends Component
             $this->tipo_pago = $row['tipo_pago'];
             $this->producto_id = $row['product_id'];
         }
-        $this->emit('showModalEditar');
+        $this->emit('showModalEditar','Editar datos de la compra');
     }
     public function updateCompra(){
         $this->validate([
@@ -130,7 +138,6 @@ class Compras extends Component
         $this->emit('udp','Datos actualizado exitosamente!');
     }
     public function generarPDF(){
-        dd('Hola');
         return redirect()->to('pdfCompra');
     }
     public function reportePDF(){

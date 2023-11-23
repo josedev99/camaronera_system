@@ -4,13 +4,13 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header py-1" style="background: #4cb050">
-                <h5 class="modal-title text-white" id="labelModalCompra">Registrar nueva compra</h5>
+                <h5 class="modal-title text-white" id="labelModalCompra" wire:ignore></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" wire:submit.prevent="{{ isset($id_compra) ? "updateCompra" : "saveCompra"}}">
+                <form method="POST" wire:submit.prevent="processForm">
                 <div class="card">
                     <div class="card-body">
                             <div class="form-row">

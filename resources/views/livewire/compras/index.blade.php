@@ -68,6 +68,7 @@
 <script>
     //Abrir modal
     function openModal(){
+        document.getElementById('labelModalCompra').textContent = "Registrar nueva compra";
         $("#addEditCompra").modal('show');
         Livewire.emit('resetFormulario')
     }
@@ -87,6 +88,7 @@
             window.location.href = window.location.origin + '/compras';
         })
         Livewire.on('showModalEditar', (res)=>{
+            document.getElementById('labelModalCompra').textContent = res;
             $("#addEditCompra").modal('show');
         })
         Livewire.on('udp', (res)=>{
@@ -136,7 +138,6 @@
             });
     }
     function edit(id){
-        console.log(id)
         Livewire.emit('edit',id);
     }
     //Reporteria compra
