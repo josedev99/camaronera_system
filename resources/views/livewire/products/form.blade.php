@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" wire:submit.prevent="saveProducto">
+                <form method="POST" wire:submit.prevent="processForm">
                     <div class="card">
                         <div class="card-body">
                             <div class="form-row">
@@ -32,8 +32,9 @@
                                     <label for="category_id">Categoria</label>
                                     <select name="" class="form-control" wire:model.lazy="category_id" id="category_id">
                                         <option value="none">Seleccionar</option>
-                                        <option value="1">special1</option>
-                                        <option value="2">special2</option>
+                                        @foreach($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

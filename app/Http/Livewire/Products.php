@@ -24,19 +24,31 @@ class Products extends Component
     public $registros;
     public $id_product;
 
+    public $categories; // Nueva propiedad para almacenar las categorías
+
 
     protected $listeners = ['destroy','edit','resetFormulario'];
 
     public function render()
     {
+        $this->categories = Category::all(); // Obtén todas las categorías
         return view('livewire.products.product', ['hello' => 'Hola'])
         ->extends('layouts.theme.app')
         ->section('content');
     }
+    
 
     public function mount()
     {
         $this->cargarRegistros();
+    }
+
+    public function processForm(){
+        if($this->id_product == ""){
+            $this->saveProducto();
+        }else{
+            $this->updateProduct();
+        }
     }
 
     public function cargarRegistros()

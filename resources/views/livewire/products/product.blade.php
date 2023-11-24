@@ -33,15 +33,25 @@
                                     <td class="text-center p-1">{{$row['nombre']}}</td>
                                     <td class="text-center p-1">{{$row['descripcion']}}</td>
                                     <td class="text-center p-1">{{$row['unidad_medida']}}</td>
-                                    <td class="text-center p-1">{{$row['category_id']}}</td>
                                     <td class="text-center p-1">
-                                    <button type="button" onclick="edit({{$row['id']}})" style="border: none !important" title="Editar producto" class="btn btn-outline-info btn-sm">
-                                        <i class="fas fa-edit text-info" style="font-size: 18px"></i>
-                                    </button>
-                                    <button style="border: none !important" class="btn btn-outline-danger btn-sm" title="Eliminar producto" onclick="confirmDelete({{$row['id']}})">
-                                        <i class="fas fa-trash text-danger" style="font-size: 18px"></i>
-                                    </button>
-                                </td>
+                                        @foreach($categories as $category)
+                                            @if($category->id == $row['category_id'])
+                                                 {{ $category->name }}
+                                            @endif
+                                        @endforeach
+                                    </td>
+
+                                    <td class="text-center p-1">
+                                        <button type="button" onclick="edit({{$row['id']}})"
+                                            style="border: none !important" title="Editar producto"
+                                            class="btn btn-outline-info btn-sm">
+                                            <i class="fas fa-edit text-info" style="font-size: 18px"></i>
+                                        </button>
+                                        <button style="border: none !important" class="btn btn-outline-danger btn-sm"
+                                            title="Eliminar producto" onclick="confirmDelete({{$row['id']}})">
+                                            <i class="fas fa-trash text-danger" style="font-size: 18px"></i>
+                                        </button>
+                                    </td>
                                     <!-- <td class="text-center p-1">
                                         <a href="#" class="btn btn-primary btn-sm font-weight-bold"><i
                                                 class="fas fa-edit"></i> Editar</a>
@@ -75,10 +85,10 @@
             $("#addEditProducts").modal('hide');
             window.location.href = window.location.origin + '/products';
         })
-        Livewire.on('showModalEditar', (res)=>{
+        Livewire.on('showModalEditar', (res) => {
             $("#addEditProducts").modal('show');
         })
-        Livewire.on('udp', (res)=>{
+        Livewire.on('udp', (res) => {
             Swal.fire({
                 title: "Exito",
                 text: res,
@@ -88,8 +98,8 @@
             window.location.href = window.location.origin + '/products';
         })
     })
-    document.addEventListener('livewire:load', ()=>{
-        Livewire.on('eliminado', (res)=>{
+    document.addEventListener('livewire:load', () => {
+        Livewire.on('eliminado', (res) => {
             Swal.fire({
                 title: "Exito",
                 text: res,
@@ -98,7 +108,7 @@
             window.location.href = window.location.origin + '/products';
         })
     })
-    function confirmDelete(id){
+    function confirmDelete(id) {
         window.confirm('¿Desea eliminar esta compra?') ? Livewire.emit('destroy', id) : null;
         return false;
         //No funciona esto de abajo
@@ -111,22 +121,22 @@
             cancelButtonColor: "#d33",
             confirmButtonText: "Si",
             cancelButtonText: "No",
-            }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
                 // Check for any errors
                 console.log(result);
                 Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success"
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
                 });
-                Livewire.emit('destroy',id);
+                Livewire.emit('destroy', id);
             }
-            });
+        });
     }
 
-    function edit(id){
+    function edit(id) {
         console.log(id)
-        Livewire.emit('edit',id);
+        Livewire.emit('edit', id);
     }
 </script>
