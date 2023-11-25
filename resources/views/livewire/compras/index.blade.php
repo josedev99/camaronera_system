@@ -1,5 +1,6 @@
 @include('livewire.compras.modal.addEdit')
 @include('livewire.compras.modal.generarPDF')
+
 <div>
     <div class="row sales layout-top-spacing">
         <div class="col-lg-12 col-12 col-sm-12 layout-spacing">
@@ -26,7 +27,7 @@
                         </div>
                     </div>
                     {{$buscar}}
-                    <table class="table table-responsive-sm table-bordered table-hover mb-4">
+                    <table class="table table-responsive-sm table-bordered table-hover mb-4 datatable">
                         <thead style=" background: #f37f23">
                             <tr>
                                 <th class="text-center text-white p-1">#</th>
@@ -59,7 +60,6 @@
                             @endforeach
                         </tbody>
                     </table> 
-                    {{ $registros->links() }}
                 </div>
             </div>
         </div>
