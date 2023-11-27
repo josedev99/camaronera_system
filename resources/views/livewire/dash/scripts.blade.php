@@ -74,7 +74,7 @@ Highcharts.chart('grafico3', {
         align: 'left'
     },
     subtitle: {
-        text: 'Tipo de pago más frecuente: {{ $TipoPagoDeCompraFrecuente[0]["name"] ?? "N/A" }}',
+        text: 'Tipo de pagos',
         align: 'left'
     },
     xAxis: {
