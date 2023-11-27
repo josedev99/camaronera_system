@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\SaleDetails;
-use App\Models\Compras;
+use App\Models\compras;
 use App\Models\Sale;
 use App\Models\Product;
 use App\Models\User;
@@ -42,7 +42,7 @@ class Dash extends Component
     }
     private function getComprasPorMes()
     {
-        return Compras::select(DB::raw('MONTH(fecha) as mes'), DB::raw('COUNT(*) as total'))
+        return compras::select(DB::raw('MONTH(fecha) as mes'), DB::raw('COUNT(*) as total'))
         ->groupBy(DB::raw('MONTH(fecha)'))
         ->orderBy('mes')
         ->get();
@@ -58,7 +58,7 @@ class Dash extends Component
      
      private function getFrecuenciaTiposPago()
     {
-        $tiposPagoFrecuentes = Compras::select(
+        $tiposPagoFrecuentes = compras::select(
             DB::raw('CASE 
                 WHEN tipo_pago = "Efectivo" THEN 0
                 WHEN tipo_pago = "Cheque" THEN 1
