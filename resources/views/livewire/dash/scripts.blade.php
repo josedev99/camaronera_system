@@ -32,81 +32,36 @@
 });
 
 Highcharts.chart('grafico2', {
-
-title: {
-    text: 'U.S Solar Employment Growth',
-    align: 'left'
-},
-
-subtitle: {
-    text: 'By Job Category. Source: <a href="https://irecusa.org/programs/solar-jobs-census/" target="_blank">IREC</a>.',
-    align: 'left'
-},
-
-yAxis: {
+    chart: {
+        type: 'pie'
+    },
     title: {
-        text: 'Number of Employees'
-    }
-},
-
-xAxis: {
-    accessibility: {
-        rangeDescription: 'Range: 2010 to 2020'
-    }
-},
-
-legend: {
-    layout: 'vertical',
-    align: 'right',
-    verticalAlign: 'middle'
-},
-
-plotOptions: {
-    series: {
-        label: {
-            connectorAllowed: false
-        },
-        pointStart: 2010
-    }
-},
-
-series: [{
-    name: 'Installation & Developers',
-    data: [43934, 48656, 65165, 81827, 112143, 142383,
-        171533, 165174, 155157, 161454, 154610]
-}, {
-    name: 'Manufacturing',
-    data: [24916, 37941, 29742, 29851, 32490, 30282,
-        38121, 36885, 33726, 34243, 31050]
-}, {
-    name: 'Sales & Distribution',
-    data: [11744, 30000, 16005, 19771, 20185, 24377,
-        32147, 30912, 29243, 29213, 25663]
-}, {
-    name: 'Operations & Maintenance',
-    data: [null, null, null, null, null, null, null,
-        null, 11164, 11218, 10077]
-}, {
-    name: 'Other',
-    data: [21908, 5548, 8105, 11248, 8989, 11816, 18274,
-        17300, 13053, 11906, 10073]
-}],
-
-responsive: {
-    rules: [{
-        condition: {
-            maxWidth: 500
-        },
-        chartOptions: {
-            legend: {
-                layout: 'horizontal',
-                align: 'center',
-                verticalAlign: 'bottom'
+        text: 'Distribución de Ventas Mensuales'
+    },
+    subtitle: {
+        text: 'Fuente: Tu fuente aquí'
+    },
+    tooltip: {
+        pointFormat: '<b>{point.name}:</b> {point.y} ventas'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}:</b> {point.y} ventas'
             }
         }
+    },
+    series: [{
+        name: 'Ventas',
+        colorByPoint: true,
+        data: {!! json_encode($ventasMensuales->map(function($venta) { 
+            $nombreMes = \Carbon\Carbon::create()->month($venta->mes)->locale('es_ES')->monthName;
+            return ['name' => $nombreMes, 'y' => $venta->total];
+        })) !!}
     }]
-}
-
 });
 
 
@@ -115,40 +70,58 @@ Highcharts.chart('grafico3', {
         type: 'bar'
     },
     title: {
-        text: 'Historic World Population by Region',
+        text: 'Distribución de Tipos de Pago',
         align: 'left'
     },
     subtitle: {
-        text: 'Source: <a ' +
-            'href="https://en.wikipedia.org/wiki/List_of_continents_and_continental_subregions_by_population"' +
-            'target="_blank">Wikipedia.org</a>',
+        text: 'Tipo de pago más frecuente: {{ $TipoPagoDeCompraFrecuente[0]["name"] ?? "N/A" }}',
         align: 'left'
     },
     xAxis: {
-        categories: ['Africa', 'America', 'Asia', 'Europe'],
+        categories: {!! json_encode($TipoPagoDeCompraFrecuente) !!}.map(item => item.name),
         title: {
             text: null
         },
         gridLineWidth: 1,
-        lineWidth: 0
+        lineWidth: 0,
+        labels: {
+            formatter: function() {
+                // Mapear números a etiquetas específicas
+                switch (this.value) {
+                    case 0:
+                        return 'Efectivo';
+                    case 1:
+                        return 'Cheque';
+                    case 2:
+                        return 'Transferencia';
+                    case 3:
+                        return 'Otro';
+                    default:
+                        return 'Desconocido';
+                }
+            }
+        }
     },
     yAxis: {
         min: 0,
         title: {
-            text: 'Population (millions)',
+            text: 'Cantidad',
             align: 'high'
         },
         labels: {
-            overflow: 'justify'
+            overflow: 'justify',
+            formatter: function () {
+                return this.value.toFixed(0); // Redondear y mostrar como entero
+            }
         },
         gridLineWidth: 0
     },
     tooltip: {
-        valueSuffix: ' millions'
+        valueSuffix: ''
     },
     plotOptions: {
         bar: {
-            borderRadius: '50%',
+            borderRadius: 0, // Sin redondeo en las barras
             dataLabels: {
                 enabled: true
             },
@@ -163,25 +136,18 @@ Highcharts.chart('grafico3', {
         y: 80,
         floating: true,
         borderWidth: 1,
-        backgroundColor:
-            Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+        backgroundColor: Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
         shadow: true
     },
     credits: {
         enabled: false
     },
     series: [{
-        name: 'Year 1990',
-        data: [631, 727, 3202, 721]
-    }, {
-        name: 'Year 2000',
-        data: [814, 841, 3714, 726]
-    }, {
-        name: 'Year 2018',
-        data: [1276, 1007, 4561, 746]
+        name: 'Cantidad de Pagos',
+        color: 'orange',
+        data: {!! json_encode($TipoPagoDeCompraFrecuente) !!}.map(item => item.y),
     }]
 });
-
 
 </script>
 

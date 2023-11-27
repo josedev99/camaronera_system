@@ -87,9 +87,6 @@
 
                         <div class="col-lg-6 col-sm-12 col-md-6 pt-2 ">
                             <div class="card">
-                                <!-- <h4 class="p-3 text-center text-theme-1 fond-bold">Productos Mas Vendidos</h4>
-
-                                <canvas id="myChart4" class="container"></canvas> -->
                                 <div id="grafico2">
                                 </div>
                             </div>
@@ -102,7 +99,6 @@
                         {{-- Grafica 3 --}}
                         <div class="col">
                             <div class="card">
-                                <h4 class="p-3 text-center text-theme-1 fond-bold">Compras</h4>
                                 <!-- <canvas id="myChart" class="container"></canvas> -->
                                 <div id="grafico3">
                                 </div>
