@@ -79,7 +79,7 @@ class AbonosV extends Component
         //validacion de abonos anteriores
         $valid = abonos::where('sale_id', '=', $this->save->id)
                     ->latest()->first();
-
+                   
         if ($valid) {
 
             
@@ -91,7 +91,8 @@ class AbonosV extends Component
                     'status' => 'PAID',
                     
                 ]);
-            } else {
+            } 
+            else {
                 $tipo = 'CREDITO';
                 
             }
@@ -107,9 +108,20 @@ class AbonosV extends Component
             
 
         } else {
+            if ($this->abono >= $sale->total) {
+                $tipo = 'PAGADO';
+               
+                $sale->update([
+                    'status' => 'PAID',
+                    
+                ]);
+            }
+            else{
+                $tipo = 'CREDITO';
+            }
             $abono = abonos::create([
                 'numero_recibo' => $sale->invoice,
-                'tipo_pago' => 'CREDITO',
+                'tipo_pago' => $tipo,
                 'monto_abono' => $this->abono,
                 'saldo' => $this->abono,
                 'sale_id' => $sale->id,
