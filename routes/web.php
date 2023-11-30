@@ -39,7 +39,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', Home::class)->name('home')->middleware('permission:home2');
+Route::get('/home', Home::class)->name('home')->middleware('permission:home');
 
 
 
