@@ -46,6 +46,7 @@ class UserSeeder extends Seeder
         Permission::create(['name' => 'abonos']);
         Permission::create(['name' => 'ventas']);
         Permission::create(['name' => 'compras']);
+        Permission::create(['name' => 'home']);
 
 
         //categorias
