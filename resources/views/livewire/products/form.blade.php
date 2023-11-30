@@ -40,7 +40,7 @@
                             </div>
                         </div>
                         <div class="card-footer p-1 d-flex justify-content-end">
-                            <button wire:click="updateProduct" class="btn btn-outline-secondary btn-sm">
+                            <button wire:click="saveProducto" class="btn btn-outline-secondary btn-sm">
                                 <i class="fas fa-save"></i> Guardar
                             </button>
                         </div>

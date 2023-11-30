@@ -37,8 +37,8 @@
                             </td>
 
                             <td class="text-center">
-                                <a href="javascript:void(0)" class="btn btn-dark mtmobile" title="Editar"><i class="fas fa-edit mt-1"></i></a>
-                                <a href="javascript:void(0)" class="btn btn-dark" title="Eliminar"><i class="fas fa-trash mt-1"></i></a>
+                                <a href="javascript:void(0)" style="border: none !important" class="btn btn-outline-info btn-sm" title="Editar"><i class="fas fa-edit mt-1"></i></a>
+                                <a href="javascript:void(0)" style="border: none !important" class="btn btn-outline-danger btn-sm" title="Eliminar"><i class="fas fa-trash mt-1"></i></a>
                             </td>
                             
                         </tr> 

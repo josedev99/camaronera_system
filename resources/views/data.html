@@ -5,7 +5,7 @@
                 @if($total > 0)
                 <div class="table-responsive tblscroll" style="max-height: 650; overflow: hidden">
                     <table class="table table-bordered table-striped mt-1">
-                        <thead style=" background: #BDBDBD">
+                        <thead style=" background: #f37f23">
                             <tr>
                                 <th width="10%"></th>
                                 <th  class="table-th text-left">Descripcion</th>
@@ -131,7 +131,7 @@
                         <div class="card-body">
                           <div class="input-group input-group-md mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text input-gp hideonsm" style="background: #3B3F5C; color:#BDBDBD;">
+                                <span class="input-group-text input-gp hideonsm" style="background: #3B3F5C; color:#f37f23;">
 
                                 </span>
                             </div>
@@ -141,7 +141,7 @@
                             class="form-control text-center"
                             value="{{$efectivo}}">
                             <div class="input-group-append">
-                                <span class="input-group-text" wire:click="$set('efectivo', 0)" style="background: #3B3F5C; color:#BDBDBD;">
+                                <span class="input-group-text" wire:click="$set('efectivo', 0)" style="background: #3B3F5C; color:#f37f23;">
                                     <i class="fas fa-backspace fa-2x"></i>
                                 </span>
                             </div>
@@ -201,7 +201,7 @@
                                             </div>            
                                         </div>
                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                        <a href="javascript:void(0)" class="btn btn-primary btn-rounded mb-2" data-toggle="modal" data-target="#theModal">Agregar</a>
+                                        <a href="javascript:void(0)"  class="btn btn-success btn-sm font-weight-bold mb-2" data-toggle="modal" data-target="#theModal">Agregar</a>
                                          
                                         </div>
                                       
@@ -226,7 +226,7 @@
                                             <div class="col-sm-12">
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered table-hover mb-4">
-                                                        <thead style=" background: #BDBDBD">
+                                                        <thead style=" background: #f37f23">
                                                             <tr>
                                                                 <th  class="table-th text-center">ID</th>
                                                                 <th  class="table-th text-center">Permiso</th>
@@ -370,12 +370,12 @@
 
                     <div class="col-sm-12 col-md-3 align-self-center d-flex justify-content-around">
                         @if($userid > 0 && $fromDate !=null && $toDate !=null)
-                        <button class="btn btn-dark" wire:click.prevent="Consultar" type="button">
+                        <button style="border: none !important" class="btn btn-outline-danger btn-sm" wire:click.prevent="Consultar" type="button">
                             Consultar
                         </button>
                         @endif
                         @if($total > 0)
-                        <button class="btn btn-dark" wire:click.prevent="Print()" type="button">
+                        <button style="border: none !important" class="btn btn-outline-danger btn-sm" wire:click.prevent="Print()" type="button">
                             Imprimir
                         </button>
                         @endif
@@ -561,12 +561,12 @@
     
                                                 <div class="col-sm-12 col-md-3 align-self-center d-flex justify-content-around">
                                                     @if($userid > 0 && $fromDate !=null && $toDate !=null)
-                                                    <button class="btn btn-dark" wire:click.prevent="Consultar" type="button">
+                                                    <button style="border: none !important" class="btn btn-outline-danger btn-sm" wire:click.prevent="Consultar" type="button">
                                                         Consultar
                                                     </button>
                                                     @endif
                                                     @if($total > 0)
-                                                    <button class="btn btn-dark" wire:click.prevent="Print()" type="button">
+                                                    <button style="border: none !important" class="btn btn-outline-danger btn-sm" wire:click.prevent="Print()" type="button">
                                                         Imprimir
                                                     </button>
                                                     @endif

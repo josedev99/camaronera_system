@@ -4,7 +4,7 @@
         type: 'column' // Cambiar el tipo de gráfico a columnas (barras)
     },
     title: {
-        text: 'Compras por MES'
+        text: 'Compras por mes'
     },
     subtitle: {
         text: 'Source: Tu fuente de datos'
@@ -36,7 +36,7 @@ Highcharts.chart('grafico2', {
         type: 'pie'
     },
     title: {
-        text: 'Distribución de Ventas Mensuales'
+        text: 'Distribución de ventas mensuales'
     },
     subtitle: {
         text: 'Fuente: Tu fuente aquí'
@@ -70,7 +70,7 @@ Highcharts.chart('grafico3', {
         type: 'bar'
     },
     title: {
-        text: 'Distribución de Tipos de Pago',
+        text: 'Distribución de tipos de pago',
         align: 'left'
     },
     subtitle: {

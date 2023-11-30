@@ -7,7 +7,7 @@
                 @if($total > 0)
                 <div class="table-responsive tblscroll" style="max-height: 650; overflow: hidden">
                     <table class="table table-bordered table-striped mt-1">
-                        <thead style=" background: #BDBDBD">
+                        <thead style=" background: #f37f23">
                             <tr>
                                 <th width="10%"></th>
                                 <th  width="14%" class="table-th text-left">Descripcion</th>

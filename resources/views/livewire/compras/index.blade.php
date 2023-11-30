@@ -6,14 +6,14 @@
         <div class="col-lg-12 col-12 col-sm-12 layout-spacing">
             <div class="statbox widget box box-shadow">
                 <div class="widget-header p-1">
-                    <div class="row">
+                    <div class="row container">
                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                            <h4 class="p-0 mb-2"><b>Gestionar compras</b></h4>
+                            <h4 class="p-0 m-2"><b>Gestionar compras</b></h4>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row container">
                         <div class="col-sm-6 col-md-6">
-                            <button onclick="openModal()" class="btn btn-outline-success btn-sm">Nueva compra</button>
+                            <button onclick="openModal()" class="btn btn-success btn-sm font-weight-bold mb-2">Nueva compra</button>
                         </div>
                         <div class="col-sm-6 col-md-5 d-flex justify-content-end align-items-center">
                             <i onclick="generarPDF()" title="Generar pdf" class="far fa-file-pdf" style="color: #f75555;font-size:25px;cursor: pointer;"></i>

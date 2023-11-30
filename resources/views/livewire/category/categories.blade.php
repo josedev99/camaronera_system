@@ -12,7 +12,7 @@
 
                                     @can('category_create')
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                    <a href="javascript:void(0)" class="btn btn-primary btn-rounded mb-2" data-toggle="modal" data-target="#theModal">Agregar</a>
+                                    <a href="javascript:void(0)"  class="btn btn-success btn-sm font-weight-bold mb-2" data-toggle="modal" data-target="#theModal">Agregar</a>
                                      
                                     </div>
                                     @endcan
@@ -35,7 +35,7 @@
                                     <div class="table-responsive">
                                     
                                         <table class="table table-bordered table-hover mb-4">
-                                            <thead style=" background: #BDBDBD">
+                                            <thead style=" background: #f37f23">
                                                 <tr>
                                                     <th  class="table-th text-center">Nombre</th>
                                                     <th  class="table-th text-center">Imagen</th>
@@ -55,13 +55,13 @@
                                                     @if(auth()->user()->can('category_edit') || auth()->user()->can('category_destroy'))
                                                     <td class="text-center">
                                                         @can('category_edit')
-                                                        <a href="javascript:void(0)" wire:click="Edit({{$category->id}})" class="btn btn-dark mtmobile" title="Editar"><i class="fas fa-edit mt-1"></i></a>
+                                                        <a href="javascript:void(0)" wire:click="Edit({{$category->id}})" style="border: none !important" class="btn btn-outline-info btn-sm" title="Editar"><i class="fas fa-edit mt-1"></i></a>
                                                         @endcan
 
 
                                                         @can('category_destroy')
                                                         @if($category->products->count() < 1)
-                                                        <a href="javascript:void(0)" onclick="Confirm('{{$category->id}}')" class="btn btn-dark" title="Eliminar"><i class="fas fa-trash mt-1"></i></a>
+                                                        <a href="javascript:void(0)" onclick="Confirm('{{$category->id}}')" style="border: none !important" class="btn btn-outline-danger btn-sm" title="Eliminar"><i class="fas fa-trash mt-1"></i></a>
 
                                                         @endif
                                                         @endcan

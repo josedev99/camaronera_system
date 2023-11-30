@@ -29,10 +29,10 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'empleado',
+            'name' => 'contador',
             'phone' => '212211',
-            'email' => 'empleado@gmail.com',
-            'profile' => 'EMPLEADO',
+            'email' => 'contador@gmail.com',
+            'profile' => 'CONTADOR',
             'status' => 'ACTIVE',
             'password' => bcrypt('12345678'),
             'image' => 'noimg.png',
@@ -41,8 +41,11 @@ class UserSeeder extends Seeder
 
         //permisos en general
 
-        //dash
+        //dash 
         Permission::create(['name' => 'dash']);
+        Permission::create(['name' => 'abonos']);
+        Permission::create(['name' => 'ventas']);
+        Permission::create(['name' => 'compras']);
 
 
         //categorias
@@ -120,7 +123,7 @@ class UserSeeder extends Seeder
 
         //roles principales
         $admin    = Role::create(['name' => 'ADMINISTRADOR']);
-        $empleado = Role::create(['name' => 'EMPLEADO']);
+        $empleado = Role::create(['name' => 'CONTADOR']);
 
         //asignacion de permisos
 
@@ -171,11 +174,19 @@ class UserSeeder extends Seeder
             'cashout_table',
             'pdf',
             'excel',
+            'ventas',
+            'compras',
+            'abonos',
                         
         ]);
 
         $empleado->givePermissionTo([
-            'dash'
+            'dash',
+            'pdf',
+            'excel',
+            'report_index',
+            'report_consult',
+            'report_table',
         ]);
 
         //asignar rol al usuario admin
@@ -184,7 +195,7 @@ class UserSeeder extends Seeder
 
         //asignar rol al usuario empleado
         $uEmpleado = User::find(2);
-        $uEmpleado->syncRoles('EMPLEADO');
+        $uEmpleado->syncRoles('CONTADOR');
 
 
 

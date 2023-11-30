@@ -3,23 +3,24 @@
 
           <nav id="compactSidebar">
               <ul class="menu-categories">
+                  @can('dash')
+                      <li>
+                          <a href="{{ url('dash') }}" data-active="true" class="menu-toggle">
 
-                  <li>
-                      <a href="{{ url('dash') }}" data-active="true" class="menu-toggle">
-
-                          <div class="base-menu">
-                              <div class="base-icons">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                      viewBox="0 0 16 16">
-                                      <path fill="currentColor"
-                                          d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2zm1 12h2V2h-2v12zm-3 0V7H7v7h2zm-5 0v-3H2v3h2z" />
-                                  </svg>
+                              <div class="base-menu">
+                                  <div class="base-icons">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                          viewBox="0 0 16 16">
+                                          <path fill="currentColor"
+                                              d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2zm1 12h2V2h-2v12zm-3 0V7H7v7h2zm-5 0v-3H2v3h2z" />
+                                      </svg>
+                                  </div>
+                                  <span>Dashboard</span>
                               </div>
-                              <span>Dashboard</span>
-                          </div>
-                      </a>
-                  </li>
-
+                          </a>
+                      </li>
+                  @endcan
+                  @can('products_index')
                   <li>
                       <a href="{{ url('products') }}" data-active="true" class="menu-toggle">
 
@@ -40,7 +41,9 @@
                           </div>
                       </a>
                   </li>
+                  @endcan
 
+                  @can('ventas')
                   <li>
                       <a href="{{ url('ventas') }}" data-active="true" class="menu-toggle">
 
@@ -59,6 +62,9 @@
                           </div>
                       </a>
                   </li>
+                  @endcan
+
+                  @can('compras')
                   <li>
                       <a href="{{ url('compras') }}" data-active="true" class="menu-toggle">
 
@@ -77,23 +83,29 @@
                           </div>
                       </a>
                   </li>
-                  <li>
-                    <a href="{{ url('abonos') }}" data-active="true" class="menu-toggle">
+                  @endcan
 
-                        <div class="base-menu">
-                            <div class="base-icons">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round"
-                                    class="feather feather-dollar-sign">
-                                    <line x1="12" y1="1" x2="12" y2="23"></line>
-                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                                </svg>
-                            </div>
-                            <span>Abonos</span>
-                        </div>
-                    </a>
-                </li>
+                  @can('abonos')
+                  <li>
+                      <a href="{{ url('abonos') }}" data-active="true" class="menu-toggle">
+
+                          <div class="base-menu">
+                              <div class="base-icons">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                      stroke-linecap="round" stroke-linejoin="round"
+                                      class="feather feather-dollar-sign">
+                                      <line x1="12" y1="1" x2="12" y2="23"></line>
+                                      <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                  </svg>
+                              </div>
+                              <span>Abonos</span>
+                          </div>
+                      </a>
+                  </li>
+                  @endcan
+
+                  @can('report_index')
                   <li>
                       <a href="{{ url('reports') }}" data-active="true" class="menu-toggle">
 
@@ -101,7 +113,8 @@
                               <div class="base-icons">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                       viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                      stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+                                      stroke-linecap="round" stroke-linejoin="round"
+                                      class="feather feather-file-text">
                                       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                                       <polyline points="14 2 14 8 20 8"></polyline>
                                       <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -113,6 +126,9 @@
                           </div>
                       </a>
                   </li>
+                  @endcan
+
+                  @can('category_index')
                   <li>
                       <a href="{{ url('categories') }}" data-active="true" class="menu-toggle">
 
@@ -130,6 +146,9 @@
                           </div>
                       </a>
                   </li>
+                  @endcan
+
+                  @can('assign_index')
                   <li>
                       <a href="{{ url('assign') }}" data-active="true" class="menu-toggle">
 
@@ -147,7 +166,9 @@
                           </div>
                       </a>
                   </li>
-                 
+                  @endcan
+
+                  @can('user_index')
                   <li>
                       <a href="{{ url('users') }}" data-active="true" class="menu-toggle">
 
@@ -166,7 +187,9 @@
                           </div>
                       </a>
                   </li>
+                  @endcan
 
+                  @can('permission_index')
                   <li>
                       <a href="{{ url('permissions') }}" data-active="true" class="menu-toggle">
 
@@ -184,6 +207,9 @@
                           </div>
                       </a>
                   </li>
+                  @endcan
+
+                  @can('rol_index')
                   <li>
                       <a href="{{ url('roles') }}" data-active="true" class="menu-toggle">
 
@@ -202,9 +228,10 @@
                           </div>
                       </a>
                   </li>
+                  @endcan
 
 
-                  
+
 
 
 

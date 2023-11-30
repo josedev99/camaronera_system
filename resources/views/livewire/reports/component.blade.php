@@ -107,7 +107,7 @@
                                     @if ($reporType == 0 || $reporType == 2)
                                         @can('pdf')
                                             <a href="{{ url('report/ventas_pdf' . '/' . $userid . '/' . $reporType . '/' . $pond . '/' . $fromDate . '/' . $toDate) }}"
-                                                class="btn btn-dark btn-block 
+                                                class="btn btn-danger btn-block 
                                                         @if (count($ventas) < 1) {{ 'disabled' }} @endif
                                                         "
                                                 target="_blank">
@@ -116,7 +116,7 @@
                                         @endcan
                                         @can('excel')
                                             <a href="{{ url('report/ventas_excel' . '/' . $userid . '/' . $reporType . '/' . $pond . '/' . $fromDate . '/' . $toDate) }}"
-                                                class="btn btn-dark btn-block  
+                                                class="btn btn-success btn-block  
                                                         @if (count($ventas) < 1) {{ 'disabled' }} @endif
                                                         "
                                                 target="_blank">
@@ -128,7 +128,7 @@
                                     @elseif($reporType == 4 || $reporType == 5)
                                         @can('pdf')
                                             <a href="{{ url('report/abonos_pdf' . '/' . $userid . '/' . $reporType . '/' . $fromDate . '/' . $toDate) }}"
-                                                class="btn btn-dark btn-block 
+                                                class="btn btn-danger btn-block 
                                                 @if (count($abonos) < 1) {{ 'disabled' }} @endif
                                                 "
                                                 target="_blank">
@@ -137,7 +137,7 @@
                                         @endcan
                                         @can('excel')
                                             <a href="{{ url('report/abonos_excel' . '/' . $userid . '/' . $reporType . '/' . $fromDate . '/' . $toDate) }}"
-                                                class="btn btn-dark btn-block  
+                                                class="btn btn-success btn-block  
                                                 @if (count($abonos) < 1) {{ 'disabled' }} @endif
                                                 "
                                                 target="_blank">
@@ -148,7 +148,7 @@
                                     @else
                                         @can('pdf')
                                             <a href="{{ url('report/compras_pdf' . '/' . $userid . '/' . $reporType . '/' . $fromDate . '/' . $toDate) }}"
-                                                class="btn btn-dark btn-block 
+                                                class="btn btn-danger btn-block 
                                                         @if (count($compras) < 1) {{ 'disabled' }} @endif
                                                         "
                                                 target="_blank">
@@ -157,7 +157,7 @@
                                         @endcan
                                         @can('excel')
                                             <a href="{{ url('report/compras_excel' . '/' . $userid . '/' . $reporType . '/' . $fromDate . '/' . $toDate) }}"
-                                                class="btn btn-dark btn-block  
+                                                class="btn btn-success btn-block  
                                                         @if (count($compras) < 1) {{ 'disabled' }} @endif
                                                         "
                                                 target="_blank">

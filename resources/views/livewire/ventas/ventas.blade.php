@@ -60,10 +60,10 @@
                                     <td class="text-center p-1">
 
                                         <a href="javascript:void(0)" wire:click="Show({{ $i->id }})"
-                                            class="btn btn-primary btn-sm font-weight-bold" title="Show"><i
+                                            style="border: none !important" class="btn btn-outline-info btn-sm" title="Show"><i
                                                 class="fas fa-eye mt-1"></i></a>
                                         <a href="javascript:void(0)" wire:click="Edit({{ $i->id }})"
-                                            class="btn btn-primary btn-sm font-weight-bold" title="Editar"><i
+                                            style="border: none !important" class="btn btn-outline-info btn-sm" title="Editar"><i
                                                 class="fas fa-edit mt-1"></i></a>
 
 
@@ -72,7 +72,7 @@
 
 
                                         <a href="javascript:void(0)" onclick="Confirm('{{ $i->id }}')"
-                                            class="btn btn-danger btn-sm font-weight-bold" title="Eliminar"><i class="fas fa-trash mt-1"></i></a>
+                                            style="border: none !important" class="btn btn-outline-danger btn-sm" title="Eliminar"><i class="fas fa-trash mt-1"></i></a>
 
 
                                     </td>

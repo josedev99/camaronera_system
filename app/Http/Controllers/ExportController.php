@@ -254,6 +254,15 @@ class ExportController extends Controller
         return $pdf->stream('Compras ' . $reportNow . ' .pdf');
     }
 
+    public function products_pdf()
+    {
+        $data = Product::all();
+
+        $pdf = Pdf::loadView('pdf.productos', compact('data'));
+        $reportNow = Carbon::parse(Carbon::now())->format('d-m-Y h-i');
+        return $pdf->stream('Productos ' . $reportNow . '_.pdf');
+    }
+
     public function abonos_pdf($userid, $reporType, $dateFrom = null, $dateTo = null)
     {
         $this->userid = $userid;

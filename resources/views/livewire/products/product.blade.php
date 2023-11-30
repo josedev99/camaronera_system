@@ -4,14 +4,27 @@
         <div class="col-lg-12 col-md-12 col-sm-12 layout-spacing">
             <div class="statbox widget box box-shadow">
                 <div class="widget-header p-1">
-                    <div class="row">
-                        <div class="col-xl-12 col-md-12 col-sm-12 col-12 mt-3">
-                            <h3 class="p-0 mb-2"><i class="fas fa-box h3"></i> Gestionar Productos</h3>
-                        </div>
+                    <div class="col-xl-12 col-md-12 col-sm-12 col-12 mt-3">
+                        <h3 class="p-0 mb-2"><i class="fas fa-box h3"></i> Gestionar Productos</h3>
                     </div>
-                    <button onclick="openModalP()" class="btn btn-success btn-sm font-weight-bold">
-                        <i class="fas fa-plus-circle text-white"></i> Nuevo
-                    </button>
+                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                        <button onclick="openModalP()" class="btn btn-success btn-sm font-weight-bold mb-2">
+                            <i class="fas fa-plus-circle text-white"></i> Nuevo
+                        </button>
+
+                        <a href="{{ url('report/productos_pdf') }}" class="far fa-file-pdf ml-2"
+                            style="color: #f75555;font-size:25px;cursor: pointer;" target="_blank">
+                        </a>
+
+
+                    </div>
+
+
+
+
+
+                    @include('common.searchbox')
+
                 </div>
                 <div class="widget-content widget-content-area">
                     <div class="table-responsive">
@@ -27,38 +40,39 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($registros as $row)
-                                <tr>
-                                    <td class="text-center p-1">{{$row['id']}}</td>
-                                    <td class="text-center p-1">{{$row['nombre']}}</td>
-                                    <td class="text-center p-1">{{$row['descripcion']}}</td>
-                                    <td class="text-center p-1">{{$row['unidad_medida']}}</td>
-                                    <td class="text-center p-1">
-                                        @foreach($categories as $category)
-                                            @if($category->id == $row['category_id'])
-                                                 {{ $category->name }}
-                                            @endif
-                                        @endforeach
-                                    </td>
+                                @foreach ($registros as $row)
+                                    <tr>
+                                        <td class="text-center p-1">{{ $row['id'] }}</td>
+                                        <td class="text-center p-1">{{ $row['nombre'] }}</td>
+                                        <td class="text-center p-1">{{ $row['descripcion'] }}</td>
+                                        <td class="text-center p-1">{{ $row['unidad_medida'] }}</td>
+                                        <td class="text-center p-1">
+                                            @foreach ($categories as $category)
+                                                @if ($category->id == $row['category_id'])
+                                                    {{ $category->name }}
+                                                @endif
+                                            @endforeach
+                                        </td>
 
-                                    <td class="text-center p-1">
-                                        <button type="button" onclick="edit({{$row['id']}})"
-                                            style="border: none !important" title="Editar producto"
-                                            class="btn btn-outline-info btn-sm">
-                                            <i class="fas fa-edit text-info" style="font-size: 18px"></i>
-                                        </button>
-                                        <button style="border: none !important" class="btn btn-outline-danger btn-sm"
-                                            title="Eliminar producto" onclick="confirmDelete({{$row['id']}})">
-                                            <i class="fas fa-trash text-danger" style="font-size: 18px"></i>
-                                        </button>
-                                    </td>
-                                    <!-- <td class="text-center p-1">
+                                        <td class="text-center p-1">
+                                            <button type="button" onclick="edit({{ $row['id'] }})"
+                                                style="border: none !important" title="Editar producto"
+                                                class="btn btn-outline-info btn-sm">
+                                                <i class="fas fa-edit text-info" style="font-size: 18px"></i>
+                                            </button>
+                                            <button style="border: none !important"
+                                                class="btn btn-outline-danger btn-sm" title="Eliminar producto"
+                                                onclick="confirmDelete({{ $row['id'] }})">
+                                                <i class="fas fa-trash text-danger" style="font-size: 18px"></i>
+                                            </button>
+                                        </td>
+                                        <!-- <td class="text-center p-1">
                                         <a href="#" class="btn btn-primary btn-sm font-weight-bold"><i
                                                 class="fas fa-edit"></i> Editar</a>
                                         <a href="#" class="btn btn-danger btn-sm font-weight-bold"><i
                                                 class="fas fa-trash"></i> Eliminar</a>
                                     </td> -->
-                                </tr>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -108,6 +122,7 @@
             window.location.href = window.location.origin + '/products';
         })
     })
+
     function confirmDelete(id) {
         window.confirm('¿Desea eliminar esta compra?') ? Livewire.emit('destroy', id) : null;
         return false;

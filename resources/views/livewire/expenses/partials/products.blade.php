@@ -28,7 +28,7 @@
                         <div class="table-responsive">
                             
                             <table class="table table-bordered table-hover mb-4">
-                                <thead style=" background: #BDBDBD">
+                                <thead style=" background: #f37f23">
                                     <tr>
                                         <th class="table-th text-center">Producto</th>
                                         <th class="table-th text-center">Acciones</th>

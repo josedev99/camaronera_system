@@ -31,7 +31,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,
         ]);
         Product::create([
-            'nombre' => 'Test 1',
+            'nombre' => 'Cal hidratada',
             'descripcion' => '25%',
             'unidad_medida' => 'GR',
             'image' => 'noimg.png',

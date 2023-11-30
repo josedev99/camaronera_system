@@ -47,12 +47,12 @@
 
                                             <div class="col-sm-12 col-md-3 align-self-center d-flex justify-content-around">
                                                 @if($userid > 0 && $fromDate !=null && $toDate !=null)
-                                                <button class="btn btn-dark" wire:click.prevent="Consultar" type="button">
+                                                <button style="border: none !important" class="btn btn-outline-danger btn-sm" wire:click.prevent="Consultar" type="button">
                                                     Consultar
                                                 </button>
                                                 @endif
                                                 @if($total > 0)
-                                                <button class="btn btn-dark" wire:click.prevent="Print()" type="button">
+                                                <button style="border: none !important" class="btn btn-outline-danger btn-sm" wire:click.prevent="Print()" type="button">
                                                     Imprimir
                                                 </button>
                                                 @endif

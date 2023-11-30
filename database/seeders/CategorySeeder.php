@@ -27,5 +27,15 @@ class CategorySeeder extends Seeder
             'name' => 'Piezas',
             'image' => 'noimg.png'
         ]);
+
+        Category::create([
+            'name' => 'Cultivo',
+            'image' => 'noimg.png'
+        ]);
+
+        Category::create([
+            'name' => 'Otros',
+            'image' => 'noimg.png'
+        ]);
     }
 }

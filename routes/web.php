@@ -75,6 +75,7 @@ Route::middleware(['auth'])->group(function () {
         //reportepdf
         Route::get('report/pdf/{user}/{type}/{product}/{fi}/{ff}', [ExportController::class, 'reportPDF'])->middleware('permission:pdf');;
         Route::get('report/pdf/{user}/{type}/{product}', [ExportController::class, 'reportPDF'])->middleware('permission:pdf');;
+        Route::get('report/productos_pdf', [ExportController::class, 'products_pdf'])->middleware('permission:pdf');
         //ventaspdf
         Route::get('report/ventas_pdf/{user}/{type}/{pond}/{fi}/{ff}', [ExportController::class, 'ventas_pdf'])->middleware('permission:pdf');
         Route::get('report/ventas_pdf/{user}/{type}/{pond}', [ExportController::class, 'ventas_pdf'])->middleware('permission:pdf');

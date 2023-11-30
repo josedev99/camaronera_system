@@ -51,7 +51,7 @@
                         <div class="table-responsive">
                             @can('assign_table')
                                 <table class="table table-bordered table-hover mb-4">
-                                    <thead style=" background: #BDBDBD">
+                                    <thead style=" background: #f37f23">
                                         <tr>
                                             <th class="table-th text-center">ID</th>
                                             <th class="table-th text-center">Permiso</th>

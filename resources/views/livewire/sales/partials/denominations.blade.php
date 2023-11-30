@@ -29,7 +29,7 @@
                         <div class="input-group input-group-md mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text input-gp hideonsm"
-                                    style="background: #3B3F5C; color:#BDBDBD;">
+                                    style="background: #3B3F5C; color:#f37f23;">
                                     Efectivo F8
                                 </span>
                             </div>
@@ -37,7 +37,7 @@
                                 class="form-control text-center" value="{{ $efectivo }}">
                             <div class="input-group-append">
                                 <span class="input-group-text" wire:click="$set('efectivo', 0)"
-                                    style="background: #3B3F5C; color:#BDBDBD;">
+                                    style="background: #3B3F5C; color:#f37f23;">
                                     <i class="fas fa-backspace fa-2x"></i>
                                 </span>
                             </div>

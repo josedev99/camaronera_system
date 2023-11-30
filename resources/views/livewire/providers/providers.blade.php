@@ -12,7 +12,7 @@
 
                 @can('category_create')
                     <div class="col-sm-12 col-md-12 d-flex justify-content-end">
-                        <a href="javascript:void(0)" class="btn btn-primary btn-rounded mb-2" data-toggle="modal"
+                        <a href="javascript:void(0)"  class="btn btn-success btn-sm font-weight-bold mb-2" data-toggle="modal"
                             data-target="#theModal">Agregar</a>
 
                     </div>
@@ -43,7 +43,7 @@
                 <div class="table-responsive">
 
                     <table class="table table-bordered table-hover mb-4">
-                        <thead style=" background: #BDBDBD">
+                        <thead style=" background: #f37f23">
                             <tr>
                                 <th class="table-th text-center">Nombre</th>
                                 <th class="table-th text-center">NIT</th>
