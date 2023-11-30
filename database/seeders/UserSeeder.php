@@ -177,11 +177,12 @@ class UserSeeder extends Seeder
             'ventas',
             'compras',
             'abonos',
+            'home'
                         
         ]);
 
         $empleado->givePermissionTo([
-            'dash',
+            'home',
             'pdf',
             'excel',
             'report_index',

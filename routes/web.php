@@ -39,7 +39,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', Home::class)->name('home')->middleware('permission:dash');
+Route::get('/home', Home::class)->name('home')->middleware('permission:home');
 
 
 
@@ -57,7 +57,7 @@ Route::middleware(['auth'])->group(function () {
         });
         
         
-       Route::get('dash', Dash::class)->middleware('permission:sale_index');
+       Route::get('dash', Dash::class)->middleware('permission:dash');
         
         Route::get('categories', Categories::class)->middleware('permission:category_index');;
         Route::get('denominations', Denominations::class)->middleware('permission:denomination_index');;
