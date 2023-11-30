@@ -20,7 +20,7 @@
                           </a>
                       </li>
                   @endcan
-                  @can('products_index')
+                  @can('product_index')
                   <li>
                       <a href="{{ url('products') }}" data-active="true" class="menu-toggle">
 
